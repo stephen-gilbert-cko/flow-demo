@@ -1,15 +1,19 @@
 ## Run example
 
-1. Build the server
+1. In [app.js](public/app.js) set `PUBLIC_KEY` to your Checkout.com public API key
+
+2. In [server.js](server.js) set `SECRET_KEY` to your Checkout.com secret API key
+
+3. Build the server
 
 ```
 npm install
 ```
 
-2. Run the server
+4. Run the server
 
 ```
 npm start
 ```
 
-3. Go to [http://localhost:3000/index.html](http://localhost:3000/index.html)
+5. Go to [http://localhost:3000/index.html](http://localhost:3000/index.html)
