@@ -19,19 +19,10 @@
     </div>
 
     <form>
-        <div id="componentSelector" class="selector">
-            <label for="componentOptions">Pick a component to render:</label>
-    
-            <select name="componentOptions" id="componentOptions" onchange="updateComponent()">
-                <option value="flow">Flow (Accordion)</option>
-                <option value="card">Card</option>
-                <option value="applepay">Apple Pay (Requires HTTPS)</option>
-                <option value="googlepay">Google Pay</option>
-            </select>
-        </div>
-
         <div class="container">
-            <div id="flow-container"></div>
+            <div id="applepay-container"></div>
+            <div id="googlepay-container"></div>
+            <div id="card-container"></div>
         </div>
         <span id="error-message"></span>
         <span id="successful-payment-message"></span>

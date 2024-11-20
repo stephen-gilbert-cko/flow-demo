@@ -6,7 +6,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // Insert your secret key here
-const SECRET_KEY = "sk_sbox_xxx";
+const SECRET_KEY = "sk_sbox_fujqxckt2vwgmziv7hdoswwntum";
 
 app.post("/create-payment-sessions", async (_req, res) => {
   // Create a PaymentSession
@@ -56,6 +56,9 @@ app.post("/create-payment-sessions", async (_req, res) => {
             number: "1234567890",
             country_code: "+44",
           },
+        },
+        "3ds": {
+          enabled: true
         },
         risk: {
           enabled: true,

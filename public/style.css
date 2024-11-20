@@ -17,20 +17,11 @@ html {
 form {
   max-width: 31.5rem;
   margin: 0 auto;
+  padding: 50px;
 }
 
-.selector {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px;
-  font-size: 18px;
-}
-
-select {
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 4px;
+.container > div {
+  padding: 10px;
 }
 
 .toast {

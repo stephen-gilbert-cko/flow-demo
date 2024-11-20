@@ -1,20 +1,7 @@
-const componentSelector = document.getElementById("componentOptions"); 
-const chosenComponent = localStorage.getItem("chosenComponent");
-componentSelector.value = chosenComponent;
-
-function updateComponent() {
-  let currentSelection = document.getElementById("componentOptions").value;
-
-  if (currentSelection !== chosenComponent) {
-    localStorage.setItem("chosenComponent", currentSelection);
-    location.reload();
-  }
-}
-
 /* global CheckoutWebComponents */
 (async () => {
   // Insert your public key here
-  const PUBLIC_KEY = "pk_sbox_xxx";
+  const PUBLIC_KEY = "pk_sbox_chtanzrfxxclvcl6ahwnhgu73m4";
 
   const response = await fetch("/create-payment-sessions", { method: "POST" }); // Order
   const paymentSession = await response.json();
@@ -47,11 +34,22 @@ function updateComponent() {
     },
   });
 
-  const flowContainer = document.getElementById("flow-container");
-  const flowComponent = checkout.create(chosenComponent);
-  if (await flowComponent.isAvailable()) {
-    flowComponent.mount(flowContainer);
+  async function createComponent(container, componentType) {
+    const flowComponent = checkout.create(componentType);
+    if (await flowComponent.isAvailable()) {
+      flowComponent.mount(container);
+    }
   }
+
+  const applePayContainer = document.getElementById("applepay-container");
+  createComponent(applePayContainer, "applepay");
+
+  const googlePayContainer = document.getElementById("googlepay-container");
+  createComponent(googlePayContainer, "googlepay");
+
+  const cardContainer = document.getElementById("card-container");
+  createComponent(cardContainer, "card");
+
 })();
 
 function triggerToast(id) {
