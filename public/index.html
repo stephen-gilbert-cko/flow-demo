@@ -25,12 +25,15 @@
             <select name="componentOptions" id="componentOptions" onchange="updateComponent()">
                 <option value="flow">Flow (Accordion)</option>
                 <option value="card">Card</option>
+                <option value="address">Email, Shipping Address, Card</option>
                 <option value="applepay">Apple Pay (Requires HTTPS)</option>
                 <option value="googlepay">Google Pay</option>
             </select>
         </div>
 
         <div class="container">
+            <div id="authentication-container"></div>
+            <div id="address-container"></div>
             <div id="flow-container"></div>
         </div>
         <span id="error-message"></span>

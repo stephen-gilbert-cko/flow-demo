@@ -22,14 +22,15 @@ app.post("/create-payment-sessions", async (_req, res) => {
         amount: 6540,
         currency: "GBP",
         reference: "ORD-123A",
-        description: "Payment for Guitars and Amps",
-        billing_descriptor: {
-          name: "Jia Tsang",
-          city: "London",
-        },
+        description: "Test Order",
         customer: {
-          email: "jia.tsang@example.com",
-          name: "Jia Tsang",
+          email: "john.smith@mail.com",
+        },
+        payment_type: "Regular",
+        payment_method_configuration: {
+          card: {
+            store_payment_details: "enabled",
+          },
         },
         shipping: {
           address: {
@@ -57,9 +58,6 @@ app.post("/create-payment-sessions", async (_req, res) => {
             country_code: "+44",
           },
         },
-        risk: {
-          enabled: true,
-        },
         success_url: "http://localhost:3000/?status=succeeded",
         failure_url: "http://localhost:3000/?status=failed",
         metadata: {},
@@ -75,6 +73,28 @@ app.post("/create-payment-sessions", async (_req, res) => {
             unit_price: 1635,
           },
         ],
+        // recipient: {
+        //   first_name: "John",
+        //   last_name: "Smith",
+        //   account_number: "5555554444",
+        //   address: {
+        //     country: "GB"
+        //   }
+        // },
+        // sender: {
+        //   type: "individual",
+        //   first_name: "John",
+        //   last_name: "Smith",
+        //   date_of_birth: "1990-01-01",
+        //   address: {
+        //     address_line1: "123 High St.",
+        //     city: "London",
+        //     country: "GB"
+        //   }
+        // },
+        // processing: {
+        //   aft: true
+        // }
       }),
     }
   );

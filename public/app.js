@@ -1,4 +1,4 @@
-const componentSelector = document.getElementById("componentOptions"); 
+const componentSelector = document.getElementById("componentOptions");
 const chosenComponent = localStorage.getItem("chosenComponent");
 componentSelector.value = chosenComponent;
 
@@ -48,9 +48,36 @@ function updateComponent() {
   });
 
   const flowContainer = document.getElementById("flow-container");
-  const flowComponent = checkout.create(chosenComponent);
-  if (await flowComponent.isAvailable()) {
-    flowComponent.mount(flowContainer);
+
+  if (chosenComponent === "address") {
+    const authenticationContainer = document.getElementById("authentication-container");
+    const addressContainer = document.getElementById("address-container");
+    
+    const authenticationComponent = checkout.create("authentication", {
+      onChange: (_self, data) => {
+        console.log(data.email);
+      },
+    });
+    const addressComponent = checkout.create("shipping_address", {
+      onChange: (_self, data) => {
+        console.log(data.shippingAddress);
+      },
+    });
+    const cardComponent = checkout.create("card");
+    if (
+      (await authenticationComponent.isAvailable()) &&
+      (await cardComponent.isAvailable()) &&
+      (await addressComponent.isAvailable())
+    ) {
+      authenticationComponent.mount(authenticationContainer);
+      cardComponent.mount(flowContainer);
+      addressComponent.mount(addressContainer);
+    }
+  } else {
+    const flowComponent = checkout.create(chosenComponent);
+    if (await flowComponent.isAvailable()) {
+      flowComponent.mount(flowContainer);
+    }
   }
 })();
 
